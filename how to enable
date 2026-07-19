@@ -1,0 +1,8 @@
+This is a extension for amrita students for visualizing their attendance amd caluculate their attendance percentage by adding their leave dates
+HOW TO ADD TEH EXTENSION
+1.download the files from this repository
+2.open chrome://extensions/ 
+3.enable developer mode at top right corner
+4.click load unpacked in top left corner
+5.the extension will be added 
+6.open your attendance page it will automatically pop as a widget
