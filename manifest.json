@@ -1,0 +1,32 @@
+{
+    "manifest_version":  3,
+    "name":  "Amrita Attendance Visualizer",
+    "version":  "1.0.0",
+    "description":  "Visualize Amrita attendance, safe bunks, and recovery classes directly on the attendance page.",
+    "permissions":  [
+                        "activeTab",
+                        "storage",
+                        "tabs"
+                    ],
+    "host_permissions":  [
+                             "https://students.amrita.edu/*"
+                         ],
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "https://students.amrita.edu/client/class-attendance*"
+                                            ],
+                                "js":  [
+                                           "content.js"
+                                       ],
+                                "css":  [
+                                            "styles.css"
+                                        ],
+                                "run_at":  "document_idle"
+                            }
+                        ],
+    "action":  {
+                   "default_title":  "Amrita Attendance",
+                   "default_popup":  "popup.html"
+               }
+}

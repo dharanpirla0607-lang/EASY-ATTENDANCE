@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Amrita Attendance</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="aae-popup">
+    <main class="aae-shell">
+      <header class="aae-popup-header">
+        <div>
+          <p class="aae-kicker">Amrita Portal</p>
+          <h1>Attendance</h1>
+        </div>
+        <button id="openAttendance" class="aae-icon-button" title="Open attendance page" type="button">Open</button>
+      </header>
+
+      <section id="summary" class="aae-summary" hidden>
+        <div>
+          <span id="averageValue" class="aae-average">0%</span>
+          <span id="courseCount" class="aae-muted">0 courses</span>
+        </div>
+        <div class="aae-ring" aria-hidden="true">
+          <span id="safeCount">0</span>
+        </div>
+      </section>
+
+      <section id="timetableUpload" class="aae-panel" hidden>
+        <div class="aae-section-head">
+          <div>
+            <p class="aae-kicker">Timetable file</p>
+            <h2>Upload PDF or image</h2>
+          </div>
+          <button id="clearTimetableUpload" class="aae-text-button" type="button">Remove</button>
+        </div>
+        <label class="aae-upload-box" for="timetableFile">
+          <input id="timetableFile" type="file" accept="application/pdf,image/*">
+          <strong>Choose timetable</strong>
+          <span>PDF, JPG, PNG, or screenshot</span>
+        </label>
+        <div id="timetableUploadPreview" class="aae-upload-preview"></div>
+        <p class="aae-hint">Use the uploaded timetable as a reference, then add the weekly classes below so leave calculations stay accurate.</p>
+      </section>
+
+      <section id="timetable" class="aae-panel" hidden>
+        <div class="aae-section-head">
+          <div>
+            <p class="aae-kicker">Weekly timetable</p>
+            <h2>Add classes</h2>
+          </div>
+          <button id="clearTimetable" class="aae-text-button" type="button">Clear</button>
+        </div>
+        <div class="aae-timetable-form">
+          <select id="timetableDay" aria-label="Class day"></select>
+          <select id="timetableCourse" aria-label="Class subject"></select>
+          <input id="timetableCount" type="number" min="1" max="8" value="1" aria-label="Classes per day">
+          <button id="addTimetableEntry" class="aae-primary" type="button">Add</button>
+        </div>
+        <div id="timetableList" class="aae-timetable-list"></div>
+      </section>
+
+      <section id="planner" class="aae-panel" hidden>
+        <div class="aae-section-head">
+          <div>
+            <p class="aae-kicker">Leave planner</p>
+            <h2>Select date range</h2>
+          </div>
+          <button id="clearLeaveDates" class="aae-text-button" type="button">Clear</button>
+        </div>
+        <div class="aae-range-row">
+          <label>
+            <span>From</span>
+            <input id="leaveStartInput" type="date" aria-label="Leave start date">
+          </label>
+          <label>
+            <span>To</span>
+            <input id="leaveEndInput" type="date" aria-label="Leave end date">
+          </label>
+          <button id="addLeaveRange" class="aae-primary" type="button">Add</button>
+        </div>
+        <div id="selectedDates" class="aae-date-list"></div>
+        <p id="plannerHint" class="aae-hint">The range uses your weekly timetable automatically. Dates without timetable entries fall back to enabled subject toggles.</p>
+      </section>
+
+      <section id="emptyState" class="aae-empty">
+        <h2>No attendance data yet</h2>
+        <p>Open the Amrita attendance page and this extension will read your current table automatically.</p>
+        <button id="openAttendanceEmpty" class="aae-primary" type="button">Open attendance page</button>
+      </section>
+
+      <section id="courseList" class="aae-course-list" aria-live="polite"></section>
+
+      <footer class="aae-footer">
+        <span>Target: 75%</span>
+        <button id="refreshData" class="aae-text-button" type="button">Refresh</button>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
